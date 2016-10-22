@@ -5,6 +5,7 @@ import sg.edu.nus.iss.ejava.ca.model.Appointment;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,7 +23,10 @@ public class AppointmentBean {
     private EntityManager em;
     
     public List<Appointment> getAllAppointmentByPid(String pid) {
-        return null;
+        TypedQuery<Appointment> query = em.createNamedQuery(
+				"Appointment.findByPid", Appointment.class);
+        query.setParameter("pid", pid);
+        return query.getResultList();
     }
     
 }

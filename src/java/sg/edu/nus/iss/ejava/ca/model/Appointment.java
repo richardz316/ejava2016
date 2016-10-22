@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,6 +23,8 @@ import javax.persistence.ManyToOne;
  * @author E0015387
  */
 @Entity
+@NamedQuery(name = "Appointment.findByPid", 
+		query = "select a from Appointment a where a.pid = :pId")
 public class Appointment implements Serializable {
     
     private static final long serialVersionUID = 1L;
