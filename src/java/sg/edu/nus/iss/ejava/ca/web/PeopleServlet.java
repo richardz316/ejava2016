@@ -5,12 +5,15 @@
  */
 package sg.edu.nus.iss.ejava.ca.web;
 
+
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 /**
  *
  * @author rzhao
  */
+@WebServlet(urlPatterns = "/peopleServlet")
 public class PeopleServlet extends HttpServlet{
     
 }
