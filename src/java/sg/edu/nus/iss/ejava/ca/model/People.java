@@ -21,8 +21,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class People {
     
-    @Id 
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
     private String pid;
     
     private String name;

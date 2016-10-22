@@ -1,6 +1,7 @@
 package sg.edu.nus.iss.ejava.ca.business;
 
 
+import java.util.UUID;
 import sg.edu.nus.iss.ejava.ca.model.People;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,7 +22,7 @@ public class PeopleBean {
     private EntityManager em;
     
     public void add(People people) {
-        
+        people.setPid(UUID.randomUUID().toString().substring(0, 8));
     }
     
 }
