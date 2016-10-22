@@ -30,7 +30,7 @@ public class People implements Serializable {
     private String name;
     private String email;
     
-    @OneToMany(mappedBy = "appointments")
+    @OneToMany(mappedBy = "people")
     private List<Appointment> appointments;
 
     public String getPid() {
