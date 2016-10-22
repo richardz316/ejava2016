@@ -25,11 +25,10 @@ public class AppointmentBean {
     private EntityManager em;
     
     public List<Appointment> getAllAppointmentByPid(String pid) {
-        /*TypedQuery<Appointment> query = em.createNamedQuery(
+        TypedQuery<Appointment> query = em.createNamedQuery(
 				"Appointment.findByPid", Appointment.class);
         query.setParameter("pid", pid);
-        return query.getResultList();*/
-        return null;
+        return query.getResultList();
     }
     
 }
