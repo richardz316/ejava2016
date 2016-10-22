@@ -1,3 +1,5 @@
+package sg.edu.nus.iss.ejava.ca.model;
+
 
 import java.util.Date;
 

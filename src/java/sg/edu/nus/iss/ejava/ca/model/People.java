@@ -1,4 +1,7 @@
+package sg.edu.nus.iss.ejava.ca.model;
 
+
+import sg.edu.nus.iss.ejava.ca.model.Appointment;
 import java.util.List;
 
 /*

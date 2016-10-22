@@ -1,4 +1,8 @@
+package sg.edu.nus.iss.ejava.ca.business;
 
+
+import sg.edu.nus.iss.ejava.ca.model.Appointment;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,13 +16,13 @@ import javax.persistence.PersistenceContext;
  *
  * @author E0015387
  */
-public class PeopleBean {
+public class AppointmentBean {
     
     @PersistenceContext
     private EntityManager em;
     
-    public void add(People people) {
-        
+    public List<Appointment> getAllAppointmentByPid(String pid) {
+        return null;
     }
     
 }
