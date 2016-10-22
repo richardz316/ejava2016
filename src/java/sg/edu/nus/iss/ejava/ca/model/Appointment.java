@@ -2,6 +2,13 @@ package sg.edu.nus.iss.ejava.ca.model;
 
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,12 +20,21 @@ import java.util.Date;
  *
  * @author E0015387
  */
+@Entity
 public class Appointment {
     
+    @Id 
+    @Column(name = "appt_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int apptId;
-    private String description;
-    private Date dateTime;
     
+    private String description;
+    
+    @Column(name = "appt_date")
+    private Date apptDate;
+    
+    @ManyToOne
+    @JoinColumn( name = "pid", referencedColumnName = "pid")
     private People people;
 
     public int getApptId() {
@@ -37,12 +53,12 @@ public class Appointment {
         this.description = description;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getApptDate() {
+        return apptDate;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setApptDate(Date apptDate) {
+        this.apptDate = apptDate;
     }
 
     public People getPeople() {

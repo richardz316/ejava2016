@@ -1,8 +1,12 @@
 package sg.edu.nus.iss.ejava.ca.model;
 
 
-import sg.edu.nus.iss.ejava.ca.model.Appointment;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,12 +18,17 @@ import java.util.List;
  *
  * @author E0015387
  */
+@Entity
 public class People {
     
+    @Id 
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String pid;
+    
     private String name;
     private String email;
     
+    @OneToMany(mappedBy = "appointments")
     private List<Appointment> appointments;
 
     public String getPid() {
