@@ -3,6 +3,7 @@ package sg.edu.nus.iss.ejava.ca.business;
 
 import sg.edu.nus.iss.ejava.ca.model.Appointment;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -17,6 +18,7 @@ import javax.persistence.TypedQuery;
  *
  * @author E0015387
  */
+@Stateless
 public class AppointmentBean {
     
     @PersistenceContext

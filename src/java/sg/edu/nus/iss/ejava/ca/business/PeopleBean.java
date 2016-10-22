@@ -2,6 +2,7 @@ package sg.edu.nus.iss.ejava.ca.business;
 
 
 import java.util.UUID;
+import javax.ejb.Stateless;
 import sg.edu.nus.iss.ejava.ca.model.People;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,6 +17,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author E0015387
  */
+@Stateless
 public class PeopleBean {
     
     @PersistenceContext
