@@ -21,8 +21,13 @@ public class PeopleBean {
     @PersistenceContext
     private EntityManager em;
     
-    public void add(People people) {
+    public void add(String name, String email) {
+        People people = new People();
         people.setPid(UUID.randomUUID().toString().substring(0, 8));
+        people.setEmail(email);
+        people.setName(name);
+        
+        em.persist(people);
     }
     
 }
