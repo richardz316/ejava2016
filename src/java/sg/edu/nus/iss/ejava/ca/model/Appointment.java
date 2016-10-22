@@ -1,6 +1,7 @@
 package sg.edu.nus.iss.ejava.ca.model;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,9 @@ import javax.persistence.ManyToOne;
  * @author E0015387
  */
 @Entity
-public class Appointment {
+public class Appointment implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
     
     @Id 
     @Column(name = "appt_id")
