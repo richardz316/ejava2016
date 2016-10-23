@@ -26,7 +26,7 @@ import javax.persistence.NamedQuery;
  * @author E0015387
  */
 @NamedQuery(name = "Appointment.findByEmail", 
-		query = "select a from People p join Appointment a where p.email = :email")
+		query = "select a from People p join p.appointments a where p.email = :email")
 @Entity
 public class Appointment implements Serializable {
     
