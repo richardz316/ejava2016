@@ -1,11 +1,14 @@
 package sg.edu.nus.iss.ejava.ca.business;
 
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import javax.ejb.Stateless;
 import sg.edu.nus.iss.ejava.ca.model.People;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,6 +33,16 @@ public class PeopleBean {
         people.setName(name);
         
         em.persist(people);
+    }
+    
+    public Optional<People> getPeopleByEmail(String email) {
+        TypedQuery<People> query = em.createNamedQuery(
+				"People.findByEmail", People.class);
+        query.setParameter("email", email);
+        List<People> result = query.getResultList();
+        if (result.size() > 0)
+                return (Optional.of(result.get(0)));
+        return (Optional.empty());
     }
     
 }

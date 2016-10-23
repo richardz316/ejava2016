@@ -41,10 +41,7 @@ import sg.edu.nus.iss.ejava.ca.model.People;
 @Path("/people")
 public class PeopleResource {
     @EJB private PeopleBean peopleBean;
-    
-    @EJB private AppointmentBean appointmentBean; 
 
-    
     @Resource(mappedName = "concurrent/myThreadPool")
     private ManagedExecutorService executors;
     
@@ -66,32 +63,18 @@ public class PeopleResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public void findAppointmentByEmail(@Context UriInfo info, @Suspended AsyncResponse async) {
+    public Response findPeopleByEmail(@Context UriInfo info) {
         
         String email = info.getQueryParameters().getFirst("email");        
         
-        FetchAppointmentTask fptTask = new FetchAppointmentTask(); 
-        fptTask.setPeopleData(email, appointmentBean);
-        fptTask.setAsyncResponse(async);
-        
-        executors.execute(fptTask);
-        
-        
-//        Optional<List<Appointment>> appointmentList = appointmentBean.getAllAppointmentByEmail(email);
-//      
-//        if (appointmentList.isPresent()) {            
-//            JsonArrayBuilder jsonArray = Json.createArrayBuilder(); 
-//            List<Appointment> appointments = appointmentList.get(); 
-//            for(Appointment appointment: appointments) {
-//                jsonArray.add(appointment.toJSON());
-//            }           
-//            
-//            return (Response.ok(jsonArray.build()).build());
-//        }
-//        
-//        return (Response.status(Response.Status.NOT_FOUND)
-//                .entity("Email not found:" + email)
-//                .build());
+        Optional<People> opt = peopleBean.getPeopleByEmail(email);
+        if (opt.isPresent()) {
+            return (Response.ok(opt.get().toJSON()).build());
+        }
+
+        return (Response.status(Response.Status.NOT_FOUND)
+                        .entity("people not found:" + email)
+                        .build());
     }
  
     

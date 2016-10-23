@@ -2,11 +2,16 @@ package sg.edu.nus.iss.ejava.ca.model;
 
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /*
@@ -19,6 +24,8 @@ import javax.persistence.OneToMany;
  *
  * @author E0015387
  */
+@NamedQuery(name = "People.findByEmail", 
+		query = "select p from People p where p.email = :email")
 @Entity
 public class People implements Serializable {
     
@@ -66,5 +73,13 @@ public class People implements Serializable {
     }
     
     
-    
+    public JsonObject toJSON() {
+        JsonObjectBuilder builder = Json.createObjectBuilder()
+                .add("pid", pid)
+                .add("name", name)
+                .add("email", email);
+
+        return builder.build();
+
+    }
 }
