@@ -49,9 +49,9 @@ public class FetchAppointmentTask implements Runnable {
                 jsonArray.add(appointment.toJSON());
             }    
             
-            JsonObject appointments = Json.createObjectBuilder().add("appointments", jsonArray.build()).build();    
+            //JsonObject appointments = Json.createObjectBuilder().add("appointments", jsonArray.build()).build();    
             
-            resp = Response.ok(appointments).build();
+            resp = Response.ok(jsonArray.build()).build();
         }
         else {
             resp = Response.status(Response.Status.NOT_FOUND)
