@@ -3,6 +3,9 @@ package sg.edu.nus.iss.ejava.ca.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +25,8 @@ import javax.persistence.NamedQuery;
  *
  * @author E0015387
  */
-@NamedQuery(name = "Appointment.findByPid", 
-		query = "select a from People p join Appointment a where p.pid = :pid")
+@NamedQuery(name = "Appointment.findByEmail", 
+		query = "select a from People p join Appointment a where p.email = :email")
 @Entity
 public class Appointment implements Serializable {
     
@@ -75,6 +78,13 @@ public class Appointment implements Serializable {
         this.people = people;
     }
     
-    
-    
+    public JsonObject toJSON() {
+        JsonObjectBuilder builder = Json.createObjectBuilder()
+                .add("dateTime", apptDate.toString())
+                .add("description", description);
+
+        return builder.build();
+
+    }
+
 }

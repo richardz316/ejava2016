@@ -3,6 +3,7 @@ package sg.edu.nus.iss.ejava.ca.business;
 
 import sg.edu.nus.iss.ejava.ca.model.Appointment;
 import java.util.List;
+import java.util.Optional;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,11 +25,11 @@ public class AppointmentBean {
     @PersistenceContext
     private EntityManager em;
     
-    public List<Appointment> getAllAppointmentByPid(String pid) {
+    public Optional<List<Appointment>> getAllAppointmentByEmail(String email) {
         TypedQuery<Appointment> query = em.createNamedQuery(
-				"Appointment.findByPid", Appointment.class);
-        query.setParameter("pid", pid);
-        return query.getResultList();
+				"Appointment.findByEmail", Appointment.class);
+        query.setParameter("email", email);
+        return Optional.ofNullable(query.getResultList());
     }
     
 }
