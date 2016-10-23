@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.core.Response;
 import sg.edu.nus.iss.ejava.ca.business.AppointmentBean;
